@@ -25,12 +25,16 @@ class App extends Component {
 
   deleteArticle(id) {
     console.log("Deleting article #" + id);
-    axios.delete('https://aivant-hello-rails.herokuapp.com/articles/' + id);
+    axios.delete('https://aivant-hello-rails.herokuapp.com/articles/' + id)
+      .then(response => {
+        this.fetchArticles();
+      });
+
   }
 
   _renderArticles() {
     const articles = this.state.articles.map((article) => (
-      <ArticleCard title={article.title} description={article.description} id={article.id} onTripleClick = {this.deleteArticle} />
+      <ArticleCard title={article.title} description={article.description} id={article.id} onTripleClick = {(id) => {this.deleteArticle(id)}} />
     ));
 
     return articles;
