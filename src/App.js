@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NewsCard from './components/NewsCard';
 import logo from './logo.svg';
 import './App.css';
 
@@ -10,9 +11,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          Welcome to React Native!
-        </p>
+        <div className ="content">
+          <NewsCard
+            title="Donald Trump did Something Again!"
+            text="Check the real site tbh: www.nytimes.com"
+          />
+        </div>
       </div>
     );
   }
