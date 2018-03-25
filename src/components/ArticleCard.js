@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './NewsCard.css';
+import './ArticleCard.css';
 
-class NewsCard extends Component {
+class ArticleCard extends Component {
 
   constructor(props) {
     super(props);
@@ -11,10 +11,10 @@ class NewsCard extends Component {
     return (
       <div className="container">
         <h3>{this.props.title}</h3>
-        <p>{this.props.text}</p>
+        <p>{this.props.description}</p>
       </div>
     )
   }
 }
 
-export default NewsCard;
+export default ArticleCard;

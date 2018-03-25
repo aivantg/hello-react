@@ -1,21 +1,45 @@
 import React, { Component } from 'react';
-import NewsCard from './components/NewsCard';
+import ArticleCard from './components/ArticleCard';
 import logo from './logo.svg';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
+
+  constructor() {
+    super()
+    this.state = {articles: []};
+    this.fetchArticles = this.fetchArticles.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchArticles();
+  }
+
+  fetchArticles() {
+    axios.get('https://aivant-hello-rails.herokuapp.com/articles')
+      .then(response => {
+        this.setState({articles: response.data})
+      });
+  }
+
+  _renderArticles() {
+    const articles = this.state.articles.map((article) => (
+      <ArticleCard title={article.title} description={article.description} />
+    ));
+
+    return articles;
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <img src={logo} className="App-logo" alt="logo" onClick={this.fetchArticles} />
+          <h1 className="App-title">{"Welcome to Aivant's React Playground"}</h1>
         </header>
-        <div className ="content">
-          <NewsCard
-            title="Donald Trump did Something Again!"
-            text="Check the real site tbh: www.nytimes.com"
-          />
+        <div className ="App-content">
+          { this._renderArticles() }
         </div>
       </div>
     );
