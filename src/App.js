@@ -23,9 +23,14 @@ class App extends Component {
       });
   }
 
+  deleteArticle(id) {
+    console.log("Deleting article #" + id);
+    axios.delete('https://aivant-hello-rails.herokuapp.com/articles/' + id);
+  }
+
   _renderArticles() {
     const articles = this.state.articles.map((article) => (
-      <ArticleCard title={article.title} description={article.description} />
+      <ArticleCard title={article.title} description={article.description} id={article.id} onTripleClick = {this.deleteArticle} />
     ));
 
     return articles;
