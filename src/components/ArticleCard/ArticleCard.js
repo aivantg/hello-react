@@ -14,6 +14,7 @@ class ArticleCard extends Component {
       this.props.onTripleClick(this.props.id);
     }
   }
+  
   render() {
     return (
       <div className="container" onClick={this.onClick}>

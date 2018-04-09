@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import ArticleCard from './components/ArticleCard';
+import ArticleCard from './components/ArticleCard/ArticleCard';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
+import Fade from 'react-reveal/Fade';
 
 class App extends Component {
 
@@ -24,7 +25,6 @@ class App extends Component {
   }
 
   deleteArticle(id) {
-    console.log("Deleting article #" + id);
     axios.delete('https://aivant-hello-rails.herokuapp.com/articles/' + id)
       .then(response => {
         this.fetchArticles();
@@ -32,12 +32,11 @@ class App extends Component {
 
   }
 
+  //TODO: Add back in Fade
   _renderArticles() {
-    const articles = this.state.articles.map((article) => (
+    return this.state.articles.map((article) => (
       <ArticleCard title={article.title} description={article.description} id={article.id} onTripleClick = {(id) => {this.deleteArticle(id)}} />
     ));
-
-    return articles;
   }
 
   render() {

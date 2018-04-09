@@ -1,11 +1,11 @@
 .container {
   display: inline-block;
-
   background-color: #EEE;
   border-radius: 16px;
   margin: 1.25%;
   padding: 30px;
-  width: 47.5%;
+  width: 200px;
   box-sizing: border-box;
-  height: 200px;
+  height: 400px;
+
 }
